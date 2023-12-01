@@ -49,12 +49,18 @@ public class CalculadoraConsciente {
 	public void cadastrarObjeto() {
 		
 		int diasTrabalhados = 0;
-		while (getValorObjeto() >= getGanhoDia()) {
+		final double valorDia = getGanhoDia();
+		double valorDiaFinal = 0;
+		while (getValorObjeto() > getGanhoDia() && getValorObjeto() >= valorDiaFinal) {
+			valorDiaFinal += valorDia;
 			diasTrabalhados++;
 		}
 		
 		double horasTrabalhadas = 0.0;
-		while (getValorObjeto() > getGanhoHora()) {
+		final double valorHora = getGanhoHora();
+		double valorHoraFinal = 0.0;
+		while (getValorObjeto() > getGanhoHora() && getValorObjeto() >= valorHoraFinal) {
+			valorHoraFinal += valorHora;
 			horasTrabalhadas++;
 		}
 		
@@ -65,7 +71,7 @@ public class CalculadoraConsciente {
 	}
 	
 	public String toString() {
-		return "-- Dados do Trabalhador --" + "\n-- Salario/Dia: R$" + getGanhoDia() + "  --\n-- Salario/Hora: R$" + getGanhoHora() + "  --\n--------------------------";
+		return "-- Dados do Trabalhador --" + "\n-- Salario/Dia: R$" + getGanhoDia() + "  --\n-- Salario/Hora: R$" + getGanhoHora() + "  --\n--------------------------" + "\n--------------------------";
 	}
 	
 	
