@@ -4,13 +4,13 @@ import java.util.Scanner;
 
 import util.CalculadoraConsciente;
 
-public class Start_CalculadoraConsciente {
+public class Start_CalculadoraCosnciente {
 
 	public static void main(String[] args) {
 		Scanner entrada = new Scanner(System.in);
 		CalculadoraConsciente teste = new CalculadoraConsciente(0, 0);
 		
-		System.out.print("Informe seu nome: ");
+		System.out.print("Informe seu nome: "); 
 		String nome = entrada.next();
 		System.out.print("Informe seu salario: R$");
 		double salarioLiquido = entrada.nextDouble();
