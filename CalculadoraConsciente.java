@@ -10,6 +10,7 @@ public class CalculadoraConsciente {
 	private double ganhoHora;
 	private double valorObjeto;
 	private int quantidadeParcelas;
+	private int quantidadeProduto;
 
 	public CalculadoraConsciente(double ganhoDia, double ganhoHora) {
 		this.ganhoDia = ganhoDia;
@@ -64,15 +65,25 @@ public class CalculadoraConsciente {
 		this.quantidadeParcelas = quantidadeParcelas;
 	}
 	
-	// ---------------------------------------------------------------------
+	public int getQuantidadeProduto() {
+		return quantidadeProduto;
+	}
 
+	public void setQuantidadeProduto(int quantidadeProduto) {
+		this.quantidadeProduto = quantidadeProduto;
+	}
+
+	// ---------------------------------------------------------------------
+	
 	public void dadosSalario(double salario) {
-		double salarioPorHora = Math.round(salario / 220);
+		double salarioPorHora = salario / 220;
+		String.format("%.2f", salarioPorHora);
 		setGanhoHora(salarioPorHora);
 	}
 	
 	public void dadosSalario() {
-		double salarioPorDia = Math.round(getGanhoHora() * 8);
+		double salarioPorDia = getGanhoHora() * 8;
+		String.format("%.2f", salarioPorDia);
 		setGanhoDia(salarioPorDia);
 	}
 
@@ -98,6 +109,7 @@ public class CalculadoraConsciente {
 		
 		System.out.print("Muito bem, agora me informe a quantidade que planeja comprar: ");
 		int quantidadeProduto = entrada.nextInt();
+		setQuantidadeProduto(quantidadeProduto);
 		
 		System.out.print("Certo, mais uma coisa, Como será pago o Produto ? Informe (1) para pagamento avista ou (2) para Cartão de Crédito: ");
 		int formaPagamento = entrada.nextInt();
@@ -157,7 +169,7 @@ public class CalculadoraConsciente {
 			System.out.println("-------------------- RELATORIO --------------------");
 			System.out.println("Sr(a)" + getNome() + ", Com base nos dados informados o senhor:");
 			System.out.println("Precisará trabalhar " + diasTrabalhados() + " Dias ou " + horasTrabalhadas() + " Horas Para pagar o Produto.");
-			System.out.println("Como sua forma de pagamento escolhida foi Avista, seu rendimento no proximo mês está limitado a R$" + (getSalarioLiquido() - getValorObjeto()));
+			System.out.println("Como sua forma de pagamento escolhida foi Avista, seu rendimento no proximo mês está limitado a R$" + String.format("%.2f", (getSalarioLiquido() - (getValorObjeto() * getQuantidadeProduto()))));
 			System.out.println("Pense bem antes de comprar.");
 			break;
 		case 2:
@@ -165,7 +177,7 @@ public class CalculadoraConsciente {
 			System.out.println("-------------------- RELATORIO --------------------");
 			System.out.println("Sr(a)" + getNome() + ", Com base nos dados informados o senhor:");
 			System.out.println("Precisará trabalhar " + diasTrabalhados() + " Dias ou " + horasTrabalhadas() + " Horas Para pagar o Produto.");
-			System.out.println("Como sua forma de pagamento escolhida foi Cartão de Crédito em " + getQuantidadeParcelas() + " parcelas de R$" + (getValorObjeto() / getQuantidadeParcelas()) + ", seu rendimento nos proximos " + getQuantidadeParcelas() + " meses está limitado a R$" + (getSalarioLiquido() - (getValorObjeto() / getQuantidadeParcelas())));
+			System.out.println("Como sua forma de pagamento escolhida foi Cartão de Crédito em " + getQuantidadeParcelas() + " parcelas de R$" + String.format("%.2f", ((getValorObjeto() * getQuantidadeProduto()) / getQuantidadeParcelas()))  + ", seu rendimento nos proximos " + getQuantidadeParcelas() + " meses está limitado a R$" + String.format("%.2f", (getSalarioLiquido() - ((getValorObjeto() * getQuantidadeProduto()) / getQuantidadeParcelas()))) );
 			System.out.println("Pense bem antes de comprar.");
 			break;
 		}
