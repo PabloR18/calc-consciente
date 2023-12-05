@@ -12,9 +12,17 @@ public class CalculadoraConsciente {
 	private int quantidadeParcelas;
 	private int quantidadeProduto;
 
-	public CalculadoraConsciente(double ganhoDia, double ganhoHora) {
+	
+
+	public CalculadoraConsciente(String nome, double salarioLiquido, double ganhoDia, double ganhoHora,
+			double valorObjeto, int quantidadeParcelas, int quantidadeProduto) {
+		this.nome = nome;
+		this.salarioLiquido = salarioLiquido;
 		this.ganhoDia = ganhoDia;
 		this.ganhoHora = ganhoHora;
+		this.valorObjeto = valorObjeto;
+		this.quantidadeParcelas = quantidadeParcelas;
+		this.quantidadeProduto = quantidadeProduto;
 	}
 
 	public double getSalarioLiquido() {
@@ -111,7 +119,7 @@ public class CalculadoraConsciente {
 		int quantidadeProduto = entrada.nextInt();
 		setQuantidadeProduto(quantidadeProduto);
 		
-		System.out.print("Certo, mais uma coisa, Como será pago o Produto ? Informe (1) para pagamento avista ou (2) para Cartão de Crédito: ");
+		System.out.print("Certo, mais uma coisa, Como será pago o Produto ?\nInforme (1) para pagamento avista ou (2) para Cartão de Crédito: ");
 		int formaPagamento = entrada.nextInt();
 		
 		switch (formaPagamento) {
@@ -177,7 +185,7 @@ public class CalculadoraConsciente {
 			System.out.println("-------------------- RELATORIO --------------------");
 			System.out.println("Sr(a)" + getNome() + ", Com base nos dados informados o senhor:");
 			System.out.println("Precisará trabalhar " + diasTrabalhados() + " Dias ou " + horasTrabalhadas() + " Horas Para pagar o Produto.");
-			System.out.println("Como sua forma de pagamento escolhida foi Cartão de Crédito em " + getQuantidadeParcelas() + " parcelas de R$" + String.format("%.2f", ((getValorObjeto() * getQuantidadeProduto()) / getQuantidadeParcelas()))  + ", seu rendimento nos proximos " + getQuantidadeParcelas() + " meses está limitado a R$" + String.format("%.2f", (getSalarioLiquido() - ((getValorObjeto() * getQuantidadeProduto()) / getQuantidadeParcelas()))) );
+			System.out.println("Como sua forma de pagamento escolhida foi Cartão de Crédito em " + getQuantidadeParcelas() + " parcelas de R$" + String.format("%.2f", ((getValorObjeto() * getQuantidadeProduto()) / getQuantidadeParcelas()))  + "\nseu rendimento nos proximos " + getQuantidadeParcelas() + " meses está limitado a R$" + String.format("%.2f", (getSalarioLiquido() - ((getValorObjeto() * getQuantidadeProduto()) / getQuantidadeParcelas()))) );
 			System.out.println("Pense bem antes de comprar.");
 			break;
 		}
