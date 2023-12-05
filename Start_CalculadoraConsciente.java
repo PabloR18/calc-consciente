@@ -8,7 +8,7 @@ public class Start_CalculadoraCosnciente {
 
 	public static void main(String[] args) {
 		Scanner entrada = new Scanner(System.in);
-		CalculadoraConsciente teste = new CalculadoraConsciente(0, 0);
+		CalculadoraConsciente teste = new CalculadoraConsciente(null, 0, 0, 0, 0, 0, 0);
 	
 		teste.perguntas(entrada);
 	
